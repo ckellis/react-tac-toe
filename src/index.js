@@ -8,12 +8,12 @@ class App extends Component {
     super(props);
     this.state = {
       // board: [],
-      player: 'X'
+      player: '../../img/x.svg'
     };
   }
 
   handleClick() {
-    let nextPlayer = this.state.player === 'X' ? 'O' : 'X';
+    let nextPlayer = this.state.player === '../../img/x.svg' ? '../../img/o.svg' : '../../img/x.svg';
     this.setState({player: nextPlayer});
   }
 

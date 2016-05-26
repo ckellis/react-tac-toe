@@ -18,7 +18,7 @@ class Tile extends Component {
   render() {
     return (
       <div className="tile" onClick={this.handleClick.bind(this, this.props)}>
-        {this.state.marker}
+        <img src={this.state.marker}/>
       </div>
     );
   }
