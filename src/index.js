@@ -7,23 +7,35 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // board: [],
       player: 'X'
     };
   }
 
   handleClick() {
-    console.log("HEY")
+    let nextPlayer = this.state.player === 'X' ? 'O' : 'X';
+    this.setState({player: nextPlayer});
   }
 
   render() {
+    let board = [
+      {x: 0, y: 0, status: ''}, {x: 1, y: 0, status: ''}, {x: 2, y: 0, status: ''},
+      {x: 0, y: 1, status: ''}, {x: 1, y: 1, status: ''}, {x: 2, y: 1, status: ''},
+      {x: 0, y: 2, status: ''}, {x: 1, y: 2, status: ''}, {x: 2, y: 2, status: ''}
+    ]
+
+    let tiles = board.map((tile, i) => {
+      return <Tile x={tile.x} y={tile.y} status={this.state.player} key={i} onClick={this.handleClick.bind(this)} />
+    })
+
     return (
       <div className="board">
-        <Tile onClick={this.handleClick} />
+        <div className="grid">
+          {tiles}
+        </div>
       </div>
     );
   }
 }
 
 ReactDOM.render(<App />, document.querySelector('.container'));
-
-

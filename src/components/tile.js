@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Tile = ({onClick}) => {
-  // const onClick = props.onClick
-  return (
-    <div onClick={() => onClick()} className="tile">
-    </div>
-  );
+class Tile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      marker: ''
+    };
+  }
+
+  handleClick() {
+    this.props.onClick();
+    if (this.state.marker === '') {
+      this.setState({marker: this.props.status})
+    }
+  }
+
+  render() {
+    return (
+      <div className="tile" onClick={this.handleClick.bind(this, this.props)}>
+        {this.state.marker}
+      </div>
+    );
+  }
 };
 
 export default Tile;
