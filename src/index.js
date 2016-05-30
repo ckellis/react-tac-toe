@@ -6,36 +6,44 @@ import Tile from './components/tile';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.game = [
+      ['', '', ''],
+      ['', '', ''],
+      ['', '', '']
+    ];
     this.state = {
-      // board: [],
-      player: '../../img/x.svg'
+      player: 'X',
+      winner: null
     };
   }
 
-  handleClick() {
-    let nextPlayer = this.state.player === '../../img/x.svg' ? '../../img/o.svg' : '../../img/x.svg';
+  handleClick(x, y) {
+    // if (checkWin(this.state.board, this.state.player)) { this.setState({winner: this.state.player}) }
+    // let boardUpdate = this.state.board;
+
+    let nextPlayer = this.state.player === 'X' ? 'O' : 'X';
     this.setState({player: nextPlayer});
   }
 
   render() {
-    let board = [
-      {x: 0, y: 0, status: ''}, {x: 1, y: 0, status: ''}, {x: 2, y: 0, status: ''},
-      {x: 0, y: 1, status: ''}, {x: 1, y: 1, status: ''}, {x: 2, y: 1, status: ''},
-      {x: 0, y: 2, status: ''}, {x: 1, y: 2, status: ''}, {x: 2, y: 2, status: ''}
-    ]
 
-    let tiles = board.map((tile, i) => {
-      return <Tile x={tile.x} y={tile.y} status={this.state.player} key={i} onClick={this.handleClick.bind(this)} />
-    })
+    let tiles = this.game.map((row, i) => {
+      return row.map((tile, j) => {
+        return <Tile x={j} y={i} turn={this.state.player} key={i+j} onClick={this.handleClick.bind(this)} />
+      });
+    });
 
     return (
-      <div className="board">
-        <div className="grid">
-          {tiles}
+      <div className="container">
+        <div className="board">
+          <div className="grid">
+            {tiles}
+          </div>
         </div>
+        {this.state.winner ? <div>{this.state.winner} wins!</div> : ''}
       </div>
     );
   }
 }
 
-ReactDOM.render(<App />, document.querySelector('.container'));
+ReactDOM.render(<App />, document.querySelector('.app'));

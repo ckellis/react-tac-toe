@@ -9,9 +9,10 @@ class Tile extends Component {
   }
 
   handleClick() {
-    this.props.onClick();
     if (this.state.marker === '') {
-      this.setState({marker: this.props.status})
+      this.props.onClick();
+      let src = this.props.turn === 'X' ? '../../img/x.svg' : '../../img/o.svg';
+      this.setState({marker: src})
     }
   }
 

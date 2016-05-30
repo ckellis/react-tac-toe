@@ -3,9 +3,15 @@ body {
   padding: 0;
 }
 
-.container {
+.app {
   width: 100%;
   height: auto;
+}
+
+.container {
+  width: 50%;
+  height: auto;
+  margin: auto;
 }
 
 .board {
