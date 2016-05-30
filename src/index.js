@@ -2,15 +2,12 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Tile from './components/tile';
+import Board from './logic/board'
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.game = [
-      ['', '', ''],
-      ['', '', ''],
-      ['', '', '']
-    ];
+    this.game = new Board(3);
     this.state = {
       player: 'X',
       winner: null
@@ -18,8 +15,8 @@ class App extends Component {
   }
 
   handleClick(x, y) {
-    // if (checkWin(this.state.board, this.state.player)) { this.setState({winner: this.state.player}) }
-    // let boardUpdate = this.state.board;
+    let winner = this.game.turn(x, y, this.state.player);
+    this.setState({winner});
 
     let nextPlayer = this.state.player === 'X' ? 'O' : 'X';
     this.setState({player: nextPlayer});
@@ -27,9 +24,9 @@ class App extends Component {
 
   render() {
 
-    let tiles = this.game.map((row, i) => {
+    let tiles = this.game.board.map((row, i) => {
       return row.map((tile, j) => {
-        return <Tile x={j} y={i} turn={this.state.player} key={i+j} onClick={this.handleClick.bind(this)} />
+        return <Tile x={j} y={i} turn={this.state.player} key={i+j} onClick={(x, y) => {this.handleClick.call(this, x, y)}} />
       });
     });
 

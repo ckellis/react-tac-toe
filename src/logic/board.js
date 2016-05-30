@@ -14,7 +14,6 @@ class Board {
 }
 
 Board.prototype.turn = function(x, y, player) {
-  console.log(this.board, x, y)
   this.board[y][x] = player;
   return this.checkWin(x, y, player);
 };
@@ -51,7 +50,7 @@ Board.prototype.checkWin = function(x, y, player) {
     if (this.board[i][(this.n - 1) - i] !== player) {
       break;
     }
-    if (i === this.n - 1) return player
+    if (i === this.n - 1) return player;
   }
 
   return null;

@@ -10,7 +10,7 @@ class Tile extends Component {
 
   handleClick() {
     if (this.state.marker === '') {
-      this.props.onClick();
+      this.props.onClick(this.props.x, this.props.y);
       let src = this.props.turn === 'X' ? '../../img/x.svg' : '../../img/o.svg';
       this.setState({marker: src})
     }
