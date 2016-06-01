@@ -9,8 +9,8 @@ class Tile extends Component {
   }
 
   /*
-    If a tile is empty, the props method onClick will be called, passing in the x and y props
-    to calculate a potential winner in the parent component. Depending on the turn prop, the
+    If a tile is empty, the props method 'onClick' will be called, passing in the x and y props
+    to calculate a potential winner in the parent component. Depending on the 'turn' prop, the
     src to the marker displayed in the tile will be either an 'X' or 'O' svg
   */
   handleClick() {

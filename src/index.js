@@ -9,13 +9,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      n: 5,
+      n: 3,
       games: 2
     };
   }
 
   /*
-    For each change to the header's input values, this function will determine if the event
+    For each change to the Header's input values, this function will determine if the event
     object belongs to the N input or the # of games input. It updates the corresponding state
     only if the conditions are met
   */
