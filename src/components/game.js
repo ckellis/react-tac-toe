@@ -24,10 +24,6 @@ class Game extends Component {
     this.setState({player: nextPlayer});
   }
 
-  handleChange(e) {
-    this.setState({n: e.target.value});
-  }
-
   handleReset() {
     this.setState(initialState);
     this.resetCount++;
@@ -43,9 +39,8 @@ class Game extends Component {
     return (
       <div className="container">
         <div className="controls">
-          n = <input type="text" value={this.n} onChange={this.handleChange.bind(this)}/>
-          {this.state.winner ? <div className="winner">{this.state.winner} wins!</div> : ''}
           <button onClick={this.handleReset.bind(this)}>Reset</button>
+          {this.state.winner ? <div className="winner">{this.state.winner} wins!</div> : ''}
         </div>
         <h2>Game #{this.props.id}</h2>
         <div className="board">
