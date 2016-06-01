@@ -16,6 +16,10 @@ class Game extends Component {
     this.game = new Board(this.n);
   }
 
+  /*
+    On each click to the game's tiles, the target tile will pass its x and y props upward to
+    check for a winner in the current board state
+  */
   handleClick(x, y) {
     let winner = this.game.turn(x, y, this.state.player);
     this.setState({winner});
@@ -24,11 +28,21 @@ class Game extends Component {
     this.setState({player: nextPlayer});
   }
 
+  /*
+    Resets state to initialState on button click, and increments the resetCount property,
+    effectively re-mounting the grid component to clear tiles of their markers
+  */
   handleReset() {
     this.setState(initialState);
     this.resetCount++;
   }
 
+  /*
+    The board needs to keep track of its column:row coordinates in order to ensure an efficient
+    'checkWin' solution. The tradeoff here is off course the O(n2) time taken to map over the
+    nested arrays, but due to the complexity of utilizing an array of objects to check for a winning
+    board state, the nested arrays seemed more practical
+  */
   render() {
     let tiles = this.game.board.map((row, i) => {
       return row.map((tile, j) => {

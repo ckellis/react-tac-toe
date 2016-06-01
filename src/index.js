@@ -14,6 +14,11 @@ class App extends Component {
     };
   }
 
+  /*
+    For each change to the header's input values, this function will determine if the event
+    object belongs to the N input or the # of games input. It updates the corresponding state
+    only if the conditions are met
+  */
   handleChange(e) {
     if (e.target.id === 'N' && e.target.value <= 10) {
       this.setState({n: e.target.value});

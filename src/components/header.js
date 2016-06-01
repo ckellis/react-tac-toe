@@ -5,6 +5,10 @@ class Header extends Component {
     super(props);
   }
 
+  /*
+    Handles change in both inputs, passing the event object to the onChange method
+    provided in props by parent component
+  */
   handleChange(e) {
     this.props.onChange(e);
   }

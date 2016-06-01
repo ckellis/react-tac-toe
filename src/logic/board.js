@@ -13,6 +13,7 @@ class Board {
   }
 }
 
+// Updates the board coordinate with the current player's marker and then checks for a winner
 Board.prototype.turn = function(x, y, player) {
   this.board[y][x] = player;
   return this.checkWin(x, y, player);
@@ -21,7 +22,7 @@ Board.prototype.turn = function(x, y, player) {
 Board.prototype.checkWin = function(x, y, player) {
   var i = 0;
 
-  // check columns for win
+  // Checks columns for win
   for (i = 0; i < this.n; i++) {
     if (this.board[i][x] !== player) {
       break;
@@ -29,7 +30,7 @@ Board.prototype.checkWin = function(x, y, player) {
     if (i === this.n - 1) return player;
   }
 
-  // check rows for win
+  // Checks rows for win
   for (i = 0; i < this.n; i++) {
     if (this.board[y][i] !== player) {
       break;
@@ -37,7 +38,7 @@ Board.prototype.checkWin = function(x, y, player) {
     if (i === this.n - 1) return player;
   }
 
-  // check diagonal for win
+  // Checks diagonals for win
   for (i = 0; i < this.n; i++) {
     if (this.board[i][i] !== player) {
       break;
@@ -45,7 +46,7 @@ Board.prototype.checkWin = function(x, y, player) {
     if (i === this.n - 1) return player;
   }
 
-  // check opposite diagonal for win
+  // Checks opposite diagonals for win
   for (i = 0; i < this.n; i++) {
     if (this.board[i][(this.n - 1) - i] !== player) {
       break;
