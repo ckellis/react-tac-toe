@@ -1,8 +1,8 @@
-import _ from 'lodash';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Tile from './components/tile';
-import Board from './logic/board'
+import Game from './components/game';
+import Board from './logic/board';
 
 class App extends Component {
   constructor(props) {
@@ -10,10 +10,8 @@ class App extends Component {
     let n = 5;
     this.state = {
       n: n,
-      player: 'X',
-      winner: null
+      games: 2
     };
-    this.game = new Board(this.state.n);
   }
 
   handleClick(x, y) {
@@ -29,23 +27,16 @@ class App extends Component {
   }
 
   render() {
-    let tiles = this.game.board.map((row, i) => {
-      return row.map((tile, j) => {
-        return <Tile n={this.state.n} x={j} y={i} turn={this.state.player} key={i+j} onClick={(x, y) => {this.handleClick.call(this, x, y)}} />
-      });
-    });
+    let games = [];
+    for (var i = 0; i < this.state.games; i++) {
+      games.push(<Game n={this.state.n} key={i} id={i+1}/>);
+    }
 
     return (
-      <div className="container">
-        <div className="board">
-          <div className="grid">
-            {tiles}
-          </div>
-        </div>
-        {this.state.winner ? <div>{this.state.winner} wins!</div> : ''}
-        <div>n = <input type="text" value={this.state.n} onChange={this.handleChange.bind(this)}/></div>
+      <div>
+        {games}
       </div>
-    );
+    )
   }
 }
 

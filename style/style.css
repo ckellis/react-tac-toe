@@ -11,7 +11,7 @@ body {
 .container {
   width: 50%;
   height: auto;
-  margin: auto;
+  margin: 5% auto;
 }
 
 .board {
@@ -53,4 +53,10 @@ body {
 .tile img {
   height: 100%;
   width: 100%;
+}
+
+.controls {
+  float: right;
+  width: auto;
+  padding-top: 10%;
 }
