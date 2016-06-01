@@ -2,6 +2,7 @@
 ---------------------------------
 
 > React-tac-toe is a traditional tic-tac-toe game built with React.
+
 > It supports up to N = 10 for N x N boards, and up to five separate games at once.
 
 ## Development Process
@@ -26,4 +27,4 @@ webpack-dev-server
 
 ### Visiting the app
 
-Visit the local application at [localhost:8080](localhost:8080)
+Visit the local application at [localhost:8080](http://localhost:8080/)
