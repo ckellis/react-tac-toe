@@ -7,11 +7,13 @@ import Board from './logic/board'
 class App extends Component {
   constructor(props) {
     super(props);
-    this.game = new Board(3);
+    let n = 5;
     this.state = {
+      n: n,
       player: 'X',
       winner: null
     };
+    this.game = new Board(this.state.n);
   }
 
   handleClick(x, y) {
@@ -22,11 +24,14 @@ class App extends Component {
     this.setState({player: nextPlayer});
   }
 
-  render() {
+  handleChange(e) {
+    this.setState({n: e.target.value});
+  }
 
+  render() {
     let tiles = this.game.board.map((row, i) => {
       return row.map((tile, j) => {
-        return <Tile x={j} y={i} turn={this.state.player} key={i+j} onClick={(x, y) => {this.handleClick.call(this, x, y)}} />
+        return <Tile n={this.state.n} x={j} y={i} turn={this.state.player} key={i+j} onClick={(x, y) => {this.handleClick.call(this, x, y)}} />
       });
     });
 
@@ -38,6 +43,7 @@ class App extends Component {
           </div>
         </div>
         {this.state.winner ? <div>{this.state.winner} wins!</div> : ''}
+        <div>n = <input type="text" value={this.state.n} onChange={this.handleChange.bind(this)}/></div>
       </div>
     );
   }

@@ -4,7 +4,8 @@ class Tile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      marker: ''
+      marker: '',
+      n: props.n
     };
   }
 
@@ -17,8 +18,13 @@ class Tile extends Component {
   }
 
   render() {
+    let tileDimensions = {
+      "height": 300/this.state.n + 'px',
+      "width": 300/this.state.n + 'px'
+    }
+
     return (
-      <div className="tile" onClick={this.handleClick.bind(this, this.props)}>
+      <div className="tile" style={tileDimensions} onClick={this.handleClick.bind(this, this.props)}>
         <img src={this.state.marker}/>
       </div>
     );
