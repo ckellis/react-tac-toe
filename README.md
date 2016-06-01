@@ -2,6 +2,7 @@
 ---------------------------------
 
 > React-tac-toe is a traditional tic-tac-toe game built with React.
+> It supports up to N = 10 for N x N boards, and up to five separate games at once.
 
 ## Development Process
 
