@@ -14,7 +14,7 @@ body {
   padding-right: 25%;
 }
 
-.header span {
+.title {
   float: left;
   position: relative;
   top: 30%;

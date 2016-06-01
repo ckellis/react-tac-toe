@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Header from './components/header';
 import Tile from './components/tile';
 import Game from './components/game';
 import Board from './logic/board';
@@ -7,23 +8,18 @@ import Board from './logic/board';
 class App extends Component {
   constructor(props) {
     super(props);
-    let n = 5;
     this.state = {
-      n: n,
+      n: 5,
       games: 2
     };
   }
 
-  handleClick(x, y) {
-    let winner = this.game.turn(x, y, this.state.player);
-    this.setState({winner});
-
-    let nextPlayer = this.state.player === 'X' ? 'O' : 'X';
-    this.setState({player: nextPlayer});
-  }
-
   handleChange(e) {
-    this.setState({n: e.target.value});
+    if (e.target.id === 'N' && e.target.value <= 10) {
+      this.setState({n: e.target.value});
+    } else if (e.target.id === 'games' && e.target.value <= 5) {
+      this.setState({games: e.target.value});
+    }
   }
 
   render() {
@@ -34,7 +30,8 @@ class App extends Component {
 
     return (
       <div>
-        {games}
+        <Header n={this.state.n} games={this.state.games} onChange={(e) => {this.handleChange.call(this, e)}}/>
+        <div key={this.state.n}>{games}</div>
       </div>
     )
   }
